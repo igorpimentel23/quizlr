@@ -42,12 +42,14 @@ const Routes: React.FC = () => {
       },
       tabBarLabelStyle: {
         fontSize: theme?.fonts.sizes.raw.xxxs || moderateScale(10),
+        fontFamily: theme?.fonts.family.medium,
       },
       tabBarActiveTintColor: theme?.colors?.text || '#fff',
     }),
     [
       theme?.colors?.background,
       theme?.colors?.text,
+      theme?.fonts.family.medium,
       theme?.fonts.sizes.raw.xxxs,
     ],
   );

@@ -25,11 +25,20 @@ interface TabIconProps extends TabBarIconProps {
 const TabIconComponent: React.FC<TabIconProps> = ({
   name,
   focused,
+  color,
   ...rest
 }) => {
   const Icon = component[name];
 
-  return <Icon opacity={focused ? 1 : 0.4} {...rest} />;
+  return (
+    <Icon
+      opacity={focused ? 1 : 0.4}
+      {...rest}
+      fill={color}
+      color={color}
+      fillRule="evenodd"
+    />
+  );
 };
 
 export default TabIconComponent;

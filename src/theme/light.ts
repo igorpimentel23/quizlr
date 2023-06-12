@@ -37,6 +37,7 @@ const light: DefaultTheme = {
     },
     background: '#fff',
     text: '#000',
+    secondaryText: 'rgba(0, 0, 0, 0.4)',
     ...colors,
   },
   fonts,

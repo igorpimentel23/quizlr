@@ -37,6 +37,7 @@ const dark: DefaultTheme = {
     },
     background: '#000',
     text: '#fff',
+    secondaryText: 'rgba(255, 255, 255, 0.4)',
     ...colors,
   },
   fonts,

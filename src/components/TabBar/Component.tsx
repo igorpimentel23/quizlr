@@ -2,10 +2,11 @@ import { MaterialTopTabBarProps } from '@react-navigation/material-top-tabs';
 import {
   ParamListBase,
   TabNavigationState,
-  useTheme,
+  useTheme as useNavigationTheme,
 } from '@react-navigation/native';
 import { StyleSheet, Text, View } from 'react-native';
 import { TabBar, TabBarIndicator } from 'react-native-tab-view';
+import { useTheme } from 'styled-components';
 import { Container, LeftContainer, RightContainer } from './style';
 
 const styles = StyleSheet.create({
@@ -28,7 +29,8 @@ const TabBarComponent: React.FC<TabBarComponentProps> = ({
   rightItem,
   ...rest
 }) => {
-  const { colors } = useTheme();
+  const { colors } = useNavigationTheme();
+  const theme = useTheme();
 
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
@@ -113,7 +115,12 @@ const TabBarComponent: React.FC<TabBarComponentProps> = ({
           return (
             <Text
               style={[
-                { color, fontWeight: focused ? '700' : '400' },
+                {
+                  color,
+                  fontFamily: focused
+                    ? theme?.fonts.family.bold
+                    : theme?.fonts.family.regular,
+                },
                 options.tabBarLabelStyle,
               ]}
               allowFontScaling={options.tabBarAllowFontScaling}

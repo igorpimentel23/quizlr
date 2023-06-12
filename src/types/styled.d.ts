@@ -11,6 +11,7 @@ declare module 'styled-components' {
       };
       background: string;
       text: string;
+      secondaryText: string;
       green: {
         400: string;
         500: string;
@@ -52,6 +53,13 @@ declare module 'styled-components' {
           xxxl: number;
         };
       };
+      family: {
+        regular: string;
+        medium: string;
+        semibold: string;
+        bold: string;
+        light: string;
+      };
     };
     margin: {
       xxxs: string;
@@ -64,15 +72,15 @@ declare module 'styled-components' {
       xxl: string;
       xxxl: string;
       raw: {
-        xxxs: string;
-        xxs: string;
-        xs: string;
-        sm: string;
-        md: string;
-        lg: string;
-        xl: string;
-        xxl: string;
-        xxxl: string;
+        xxxs: number;
+        xxs: number;
+        xs: number;
+        sm: number;
+        md: number;
+        lg: number;
+        xl: number;
+        xxl: number;
+        xxxl: number;
       };
     };
     padding: {
@@ -81,10 +89,10 @@ declare module 'styled-components' {
       md: string;
       lg: string;
       raw: {
-        xl: string;
-        sm: string;
-        md: string;
-        lg: string;
+        xl: number;
+        sm: number;
+        md: number;
+        lg: number;
       };
     };
   }

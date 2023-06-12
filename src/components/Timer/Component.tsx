@@ -1,6 +1,7 @@
 import { memo, useCallback, useMemo } from 'react';
 import { formatDistanceStrict } from 'date-fns';
 
+import { useTheme } from 'styled-components';
 import Timer from '@assets/icons/timer.svg';
 import { Container, TimeText } from './styles';
 
@@ -9,6 +10,7 @@ interface TimerComponentProps {
 }
 
 const TimerComponent: React.FC<TimerComponentProps> = ({ timeInSeconds }) => {
+  const theme = useTheme();
   const formatSeconds = useCallback((seconds: number) => {
     const date = new Date();
     const futureDate = new Date(date.getTime() + seconds * 1000);
@@ -26,7 +28,10 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ timeInSeconds }) => {
 
   return (
     <Container>
-      <Timer fillOpacity={0.5} />
+      <Timer
+        color={theme?.colors.secondaryText}
+        fill={theme?.colors.secondaryText}
+      />
       <TimeText>{seconds}</TimeText>
     </Container>
   );

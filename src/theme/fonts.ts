@@ -25,4 +25,11 @@ export const fonts = {
     xxxl: `${raw.xxxl}px`,
     raw,
   },
+  family: {
+    bold: 'SF Pro Rounded Bold',
+    light: 'SF Pro Rounded Light',
+    medium: 'SF Pro Rounded Medium',
+    regular: 'SF Pro Rounded Regular',
+    semibold: 'SF Pro Rounded Semibold',
+  },
 };

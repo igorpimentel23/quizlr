@@ -30,6 +30,11 @@ export const spacing = {
     sm: `${raw.sm}px`,
     md: `${raw.md}px`,
     lg: `${raw.lg}px`,
-    raw,
+    raw: {
+      xl: raw.xl,
+      sm: raw.sm,
+      md: raw.md,
+      lg: raw.lg,
+    },
   },
 };
