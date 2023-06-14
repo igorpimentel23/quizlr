@@ -103,7 +103,7 @@ const TabBarComponent: React.FC<TabBarComponentProps> = ({
 
           return null;
         }}
-        renderLabel={({ route, color, focused }) => {
+        renderLabel={({ route, color }) => {
           const { options } = descriptors[route.key];
 
           if (options.tabBarShowLabel === false) {
@@ -117,9 +117,7 @@ const TabBarComponent: React.FC<TabBarComponentProps> = ({
               style={[
                 {
                   color,
-                  fontFamily: focused
-                    ? theme?.fonts.family.bold
-                    : theme?.fonts.family.regular,
+                  fontFamily: theme?.fonts.family.bold,
                 },
                 options.tabBarLabelStyle,
               ]}
