@@ -1,5 +1,13 @@
 import { LegacyRef, memo, useCallback, useMemo, useRef, useState } from 'react';
-import { Button, Divider, HStack, VStack, View } from 'native-base';
+import {
+  AspectRatio,
+  Button,
+  Divider,
+  HStack,
+  Image,
+  VStack,
+  View,
+} from 'native-base';
 
 import FlipCard from 'react-native-flip-card';
 import { moderateScale } from 'react-native-size-matters';
@@ -11,7 +19,6 @@ import CommentIcon from '@assets/icons/comment.svg';
 import HeartIcon from '@assets/icons/heart.svg';
 import PlaylistIcon from '@assets/icons/playlist.svg';
 import ReplyIcon from '@assets/icons/reply.svg';
-import ScrollIcon from '@assets/icons/scroll.svg';
 import { IconButton } from '@components/IconButton';
 
 import { FlashCardQuestionType } from 'types/FlashcardQuestionType';
@@ -151,7 +158,15 @@ export const QuestionGridComponent: React.FC<QuestionGridComponentProps> = ({
         </FlipCard>
         <RightFloatingContainer>
           <VStack space={5}>
-            <IconButton icon={<ScrollIcon />} />
+            <AspectRatio
+              ratio={{ base: 1 }}
+              height={moderateScale(36)}
+              borderColor={theme?.colors.text}
+              borderWidth={moderateScale(2)}
+              borderRadius="full"
+            >
+              <Image src={question.user.avatar} alt={question.user.name} />
+            </AspectRatio>
             <IconButton
               text={87}
               icon={

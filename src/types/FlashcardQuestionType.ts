@@ -7,5 +7,6 @@ export type FlashCardQuestionType = {
   description: string;
   user: {
     name: string;
+    avatar: string;
   };
 };

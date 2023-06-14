@@ -1,5 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { ColorType } from 'native-base/lib/typescript/components/types';
+import { Platform } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 
 import { styled } from 'styled-components/native';
@@ -42,6 +43,8 @@ export const LeftFloatingContainer = styled.View`
   width: 88%;
   height: 12%;
   overflow: hidden;
+  margin-bottom: ${({ theme }) =>
+    Platform.OS === 'ios' ? 0 : theme.margin.xl};
 `;
 
 export const UserName = styled.Text`
