@@ -1,4 +1,12 @@
-import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import {
+  LegacyRef,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { Button, Divider, HStack, VStack, View } from 'native-base';
 
 import FlipCard from 'react-native-flip-card';
@@ -44,6 +52,12 @@ const ratingButtonColors = [
   'green.500',
 ];
 
+interface FlipCardRef {
+  state: {
+    isFlipped: boolean;
+  };
+}
+
 interface QuestionGridComponentProps {
   question: FlashCardQuestionType | MultipleChoiceQuestionType;
   fetchAnswer?: (id: number) => Promise<string>;
@@ -53,37 +67,31 @@ export const QuestionGridComponent: React.FC<QuestionGridComponentProps> = ({
   question,
   fetchAnswer,
 }) => {
+  const ref = useRef<FlipCardRef>(null);
   const theme = useTheme();
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswerLoading, setIsAnswerLoading] = useState(false);
   const [flip, setFlip] = useState(false);
-  const [correctAnswer, setCorrectAnswer] = useState<string | null>(null);
+  const [correctAnswer, setCorrectAnswer] = useState<string | undefined>();
 
   const description = useMemo(
     () => question?.description?.split('#'),
     [question?.description],
   );
 
-  const handleAnswer = useCallback(
-    (id: string) => {
-      setSelectedAnswer((prev) => prev ?? id);
-      setFlip((prev) => {
-        if (!prev) {
-          setIsAnswerLoading(true);
-          fetchAnswer?.(question.id)
-            .then((answer) => {
-              setCorrectAnswer(answer);
-            })
-            .finally(() => {
-              setIsAnswerLoading(false);
-            });
-        }
+  const handleAnswer = useCallback((id: string) => {
+    setSelectedAnswer((prev) => prev ?? id);
+    setFlip((prev) => !prev);
+  }, []);
 
-        return !prev;
-      });
-    },
-    [fetchAnswer, question.id],
-  );
+  const handleFetchAnswer = useCallback(async () => {
+    if (ref?.current?.state?.isFlipped === false && fetchAnswer) {
+      setIsAnswerLoading(true);
+      const response = await fetchAnswer?.(question.id);
+      setCorrectAnswer(response);
+      setIsAnswerLoading(false);
+    }
+  }, [fetchAnswer, question.id]);
 
   useEffect(() => {
     return () => {
@@ -95,6 +103,8 @@ export const QuestionGridComponent: React.FC<QuestionGridComponentProps> = ({
     <View flex={1}>
       <Container>
         <FlipCard
+          ref={ref as unknown as LegacyRef<FlipCard>}
+          onFlipStart={handleFetchAnswer}
           clickable={!isAnswerLoading}
           flipHorizontal
           flipVertical={false}
@@ -144,7 +154,7 @@ export const QuestionGridComponent: React.FC<QuestionGridComponentProps> = ({
                 <MCQ
                   question={question.question}
                   options={question.options}
-                  setSelectedAnswer={handleAnswer}
+                  setSelectedAnswer={() => setFlip((prev) => !prev)}
                   selectedAnswer={selectedAnswer}
                   isAnswerLoading={isAnswerLoading}
                   correctAnswer={correctAnswer}
