@@ -1,5 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import { FlatList, Spinner, View } from 'native-base';
+import { Platform } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import { useTheme } from 'styled-components';
 import { QuestionGrid } from '@components/QuestionGrid';
 import { FlashCardQuestionType } from 'types/FlashcardQuestionType';
@@ -42,6 +44,7 @@ const ScrollScreenComponent: React.FC<ScrollScreenComponentProps> = ({
   return (
     <FlatList
       flex={1}
+      pb={Platform.OS === 'ios' ? 0 : moderateScale(20)}
       data={items}
       keyExtractor={(_, index) => index.toString()}
       pagingEnabled

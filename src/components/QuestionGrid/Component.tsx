@@ -1,12 +1,4 @@
-import {
-  LegacyRef,
-  memo,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { LegacyRef, memo, useCallback, useMemo, useRef, useState } from 'react';
 import { Button, Divider, HStack, VStack, View } from 'native-base';
 
 import FlipCard from 'react-native-flip-card';
@@ -92,12 +84,6 @@ export const QuestionGridComponent: React.FC<QuestionGridComponentProps> = ({
       setIsAnswerLoading(false);
     }
   }, [fetchAnswer, question.id]);
-
-  useEffect(() => {
-    return () => {
-      setFlip(false);
-    };
-  }, []);
 
   return (
     <View flex={1}>

@@ -4,6 +4,7 @@ import {
   MaterialTopTabNavigationOptions,
   createMaterialTopTabNavigator,
 } from '@react-navigation/material-top-tabs';
+import { Platform } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import { useTheme } from 'styled-components';
 import Search from '@assets/icons/search.svg';
@@ -36,12 +37,13 @@ const HomeNavigator: React.FC = () => {
 
   const screenOptions: MaterialTopTabNavigationOptions = useMemo(
     () => ({
+      tabBarAllowFontScaling: false,
       tabBarStyle: {
         marginLeft: 'auto',
         marginRight: 'auto',
-        marginTop: 0,
+        marginTop: Platform.OS === 'android' ? moderateScale(20) : 0,
         marginBottom: theme?.margin?.raw?.md || moderateScale(16),
-        width: moderateScale(200),
+        width: moderateScale(220),
         backgroundColor: theme?.colors?.background || '#000',
         shadowColor: 'transparent',
       },
@@ -52,10 +54,10 @@ const HomeNavigator: React.FC = () => {
         color: theme?.colors?.text || '#fff',
       },
       tabBarItemStyle: {
-        width: moderateScale(100),
+        width: moderateScale(110),
       },
       tabBarIndicatorContainerStyle: {
-        maxWidth: moderateScale(50),
+        maxWidth: moderateScale(55),
         left: '25%',
         transform: [{ translateX: moderateScale(2.5) }],
       },

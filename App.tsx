@@ -4,7 +4,7 @@ import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { KeyboardAvoidingView, NativeBaseProvider } from 'native-base';
+import { NativeBaseProvider } from 'native-base';
 import { useColorScheme } from 'react-native';
 
 import { ThemeProvider } from 'styled-components';
@@ -48,9 +48,7 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <TimerProvider>
           <AppContainer onLayout={onLayoutRootView}>
-            <KeyboardAvoidingView flex={1}>
-              <Routes />
-            </KeyboardAvoidingView>
+            <Routes />
           </AppContainer>
         </TimerProvider>
         <StatusBar style="auto" />

@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import { styled } from 'styled-components/native';
 
 export const Container = styled.View`
@@ -13,6 +15,7 @@ export const LeftContainer = styled.View`
   z-index: 2;
   justify-content: center;
   margin-left: ${({ theme }) => theme.margin.xl};
+  margin-top: ${Platform.OS === 'android' ? moderateScale(20) : 0}px;
 `;
 
 export const RightContainer = styled.View`
@@ -23,4 +26,5 @@ export const RightContainer = styled.View`
   z-index: 2;
   justify-content: center;
   margin-right: ${({ theme }) => theme.margin.xl};
+  margin-top: ${Platform.OS === 'android' ? moderateScale(20) : 0}px;
 `;
