@@ -1,1 +1,1 @@
-export { default as Following } from './Screen';
+export { default as Following } from './Container';

@@ -25,6 +25,7 @@ const App: React.FC = () => {
     'SF Pro Rounded Medium': require('./src/assets/fonts/SF-Pro-Rounded-Medium.otf'),
     'SF Pro Rounded Regular': require('./src/assets/fonts/SF-Pro-Rounded-Regular.otf'),
     'SF Pro Rounded Semibold': require('./src/assets/fonts/SF-Pro-Rounded-Semibold.otf'),
+    'SF Pro Rounded Heavy': require('./src/assets/fonts/SF-Pro-Rounded-Heavy.otf'),
   });
 
   const onLayoutRootView = useCallback(async () => {

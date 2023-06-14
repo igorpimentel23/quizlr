@@ -1,13 +1,17 @@
 import { memo } from 'react';
+import { ScrollScreen } from '@components/ScrollScreen';
+import { useMcqs } from '@contexts/McqContext';
 
-import { Text, View } from 'native-base';
+export const ForYouScreen: React.FC = () => {
+  const Questions = useMcqs();
 
-export const HomeScreen: React.FC = () => {
   return (
-    <View>
-      <Text>For you</Text>
-    </View>
+    <ScrollScreen
+      items={Questions.mcqs}
+      fetchItem={Questions.getMcq}
+      fetchAnswer={Questions.fetchAnswer}
+    />
   );
 };
 
-export default memo(HomeScreen);
+export default memo(ForYouScreen);

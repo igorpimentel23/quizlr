@@ -21,10 +21,13 @@
       "@screens/*": [
         "./src/screens/*"
       ],
+      "@services/*": [
+        "./src/services/*"
+      ],
       "@theme/*": [
         "./src/theme/*"
       ],
-      "@types/*": [
+      "types/*": [
         "./src/types/*"
       ],
     }

@@ -26,10 +26,11 @@ export const fonts = {
     raw,
   },
   family: {
-    bold: 'SF Pro Rounded Bold',
-    light: 'SF Pro Rounded Light',
-    medium: 'SF Pro Rounded Medium',
-    regular: 'SF Pro Rounded Regular',
-    semibold: 'SF Pro Rounded Semibold',
+    light: 'SF Pro Rounded Light', // 300
+    regular: 'SF Pro Rounded Regular', // 400
+    medium: 'SF Pro Rounded Medium', // 500
+    semibold: 'SF Pro Rounded Semibold', // 600
+    bold: 'SF Pro Rounded Bold', // 700
+    heavy: 'SF Pro Rounded Heavy', // 800
   },
 };

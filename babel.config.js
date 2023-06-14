@@ -12,12 +12,14 @@ module.exports = function(api) {
             '@contexts': './src/contexts',
             '@routes': './src/routes',
             '@screens': './src/screens',
+            '@services': './src/services',
             '@theme': './src/theme',
-            '@types': './src/types',
+            'types': './src/types',
           },
           extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
         },
       ],
+      ["module:react-native-dotenv"]
     ],
   };
 };

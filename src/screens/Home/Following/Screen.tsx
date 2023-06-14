@@ -1,13 +1,16 @@
 import { memo } from 'react';
+import { ScrollScreen } from '@components/ScrollScreen';
+import { useFlashcards } from '@contexts/FlashcardContext';
 
-import { Text, View } from 'native-base';
+export const FollowingScreen: React.FC = () => {
+  const Questions = useFlashcards();
 
-export const HomeScreen: React.FC = () => {
   return (
-    <View>
-      <Text>Following</Text>
-    </View>
+    <ScrollScreen
+      items={Questions.flashCards}
+      fetchItem={Questions.getFlashCard}
+    />
   );
 };
 
-export default memo(HomeScreen);
+export default memo(FollowingScreen);

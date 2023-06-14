@@ -1,12 +1,13 @@
 import { ITheme, extendTheme } from 'native-base';
-import { DefaultTheme } from 'styled-components/dist/types';
 import { fonts } from './fonts';
 import { spacing } from './spacing';
 
 const colors = {
   green: {
+    50: '#00FF00',
     400: '#28B18F',
-    500: '#00FF00',
+    500: '#1F8A70',
+    600: '#16624F',
   },
   yellow: {
     400: '#FFD449',
@@ -21,13 +22,14 @@ const colors = {
     500: '#F17D23',
   },
   error: '#D84E4E',
+  white: '#fff',
 };
 
 const darkBaseTheme: ITheme = extendTheme({
   colors,
 });
 
-const dark: DefaultTheme = {
+const dark = {
   colors: {
     primary: '#003A4F',
     secondary: '#002634',
@@ -36,6 +38,8 @@ const dark: DefaultTheme = {
       end: '#00425A',
     },
     background: '#000',
+    secondaryBackground: '#161616',
+    tertiaryBackground: 'rgba(255, 255, 255, 0.2)',
     text: '#fff',
     secondaryText: 'rgba(255, 255, 255, 0.4)',
     ...colors,

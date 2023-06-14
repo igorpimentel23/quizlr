@@ -66,8 +66,9 @@
           "/^@contexts/",
           "/^@routes/",
           "/^@screens/",
+          "/^@services/",
           "/^@theme/",
-          "/^@types/",
+          "/^types/",
           [
             "parent",
             "sibling",

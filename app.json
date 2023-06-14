@@ -37,6 +37,18 @@
         "wasm",
         "svg"
       ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "59eadcc1-704c-4823-a6ae-dc6bb50a9d99"
+      }
+    },
+    "owner": "igortpimentel",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/59eadcc1-704c-4823-a6ae-dc6bb50a9d99"
     }
   }
 }
