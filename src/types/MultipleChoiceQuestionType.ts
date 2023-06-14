@@ -10,5 +10,6 @@ export type MultipleChoiceQuestionType = {
   }[];
   user: {
     name: string;
+    avatar: string;
   };
 };
