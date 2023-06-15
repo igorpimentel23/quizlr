@@ -72,6 +72,13 @@ yarn android
 <img src="https://github.com/igorpimentel23/quizlr/assets/72712137/bd2a269d-50ed-4d47-ac50-7e4ef344dcdc" alt="screenshot-3" width="200" />
 <img src="https://github.com/igorpimentel23/quizlr/assets/72712137/46f8ef80-cb0c-4a2f-b4b2-8088501d231c" alt="screenshot-4" width="200" />
 
+
+<img src="https://github.com/igorpimentel23/quizlr/assets/72712137/2630917d-af88-48ae-a5e9-f80d71697763" alt="screenshot-5" width="200" />
+<img src="https://github.com/igorpimentel23/quizlr/assets/72712137/1f07c26f-912f-42f5-bd89-fe182afb6cc9" alt="screenshot-6" width="200" />
+<img src="https://github.com/igorpimentel23/quizlr/assets/72712137/84cbfa42-304b-4af5-a6b5-b9136993f137" alt="screenshot-7" width="200" />
+<img src="https://github.com/igorpimentel23/quizlr/assets/72712137/e4f928bf-926c-411f-80ff-0bcfa3091106" alt="screenshot-8" width="200" />
+
+
 [App page on Expo](https://expo.dev/%40igortpimentel/quizlr?serviceType=eas&distribution=expo-go&scheme=exp%2Bquizlr&channel=develop&sdkVersion=48.0.0)
 
 ## Authors
