@@ -16,24 +16,13 @@ export const TimerProvider: React.FC<TimerProviderProps> = ({ children }) => {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((sec) => sec + 1);
-    }, 1000);
+    const interval = setInterval(() => setSeconds((sec) => sec + 1), 1000);
 
-    return () => {
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <TimerContext.Provider
-      value={useMemo(
-        () => ({
-          seconds,
-        }),
-        [seconds],
-      )}
-    >
+    <TimerContext.Provider value={useMemo(() => ({ seconds }), [seconds])}>
       {children}
     </TimerContext.Provider>
   );
