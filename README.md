@@ -72,6 +72,8 @@ yarn android
 <img src="https://github.com/igorpimentel23/quizlr/assets/72712137/bd2a269d-50ed-4d47-ac50-7e4ef344dcdc" alt="screenshot-3" width="200" />
 <img src="https://github.com/igorpimentel23/quizlr/assets/72712137/46f8ef80-cb0c-4a2f-b4b2-8088501d231c" alt="screenshot-4" width="200" />
 
+[App page on Expo](https://expo.dev/@igortpimentel/quizlr)
+
 ## Authors
 
 * **Igor Pimentel** - *Initial work* - [igorpimentel23](https://github.com/igorpimentel23)
