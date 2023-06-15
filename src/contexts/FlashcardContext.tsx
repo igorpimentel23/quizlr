@@ -6,19 +6,14 @@ import {
   useState,
 } from 'react';
 
-import { AxiosError } from 'axios';
 import { useToast } from 'native-base';
 import api from '@services/api';
 import { FlashCardQuestionType } from 'types/FlashcardQuestionType';
-import {
-  GenericCallableType,
-  UnprocessableEntityErrorType,
-} from 'types/Global';
+import { GenericCallableType } from 'types/Global';
 
 interface FlashcardsProps {
   getFlashCard: GetFlashCardCallableType;
   flashCards: FlashCardQuestionType[];
-  controller: AbortController;
 }
 
 interface QuestionProviderProps {
@@ -33,8 +28,6 @@ export const FlashcardsContext = createContext<FlashcardsProps>(
   {} as FlashcardsProps,
 );
 
-const controller = new AbortController();
-
 export const FlashcardsProvider: React.FC<QuestionProviderProps> = ({
   children,
 }) => {
@@ -47,20 +40,14 @@ export const FlashcardsProvider: React.FC<QuestionProviderProps> = ({
     setIsFetchingFlashCard(true);
 
     try {
-      const { data } = await api.get<FlashCardQuestionType>('/following', {
-        signal: controller.signal,
-      });
+      const { data } = await api.get<FlashCardQuestionType>('/following');
 
       setFlashCards((prev) => [...prev, data]);
       successful = true;
-    } catch (e) {
-      const { response } = e as AxiosError;
-
+    } catch {
       successful = false;
       toast.show({
-        description:
-          (response?.data as UnprocessableEntityErrorType)?.message ||
-          'Something went wrong',
+        description: 'Something went wrong while fetching the question.',
         placement: 'top',
         bgColor: 'error',
       });
@@ -79,7 +66,6 @@ export const FlashcardsProvider: React.FC<QuestionProviderProps> = ({
         return {
           getFlashCard,
           flashCards,
-          controller,
         };
       }, [flashCards, getFlashCard, isFetchingFlashCard])}
     >

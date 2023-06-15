@@ -5,13 +5,10 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { AxiosError } from 'axios';
+
 import { useToast } from 'native-base';
 import api from '@services/api';
-import {
-  GenericCallableType,
-  UnprocessableEntityErrorType,
-} from 'types/Global';
+import { GenericCallableType } from 'types/Global';
 import { MultipleChoiceQuestionType } from 'types/MultipleChoiceQuestionType';
 
 interface FetchAnswerResponse {
@@ -29,7 +26,6 @@ interface McqsProps {
   getMcq: GetMcqCallableType;
   mcqs: MultipleChoiceQuestionType[];
   fetchAnswer: FetchAnswerCallableType;
-  controller: AbortController;
 }
 
 interface McqsProviderProps {
@@ -37,8 +33,6 @@ interface McqsProviderProps {
 }
 
 export const McqsContext = createContext<McqsProps>({} as McqsProps);
-
-const controller = new AbortController();
 
 export const McqsProvider: React.FC<McqsProviderProps> = ({ children }) => {
   const toast = useToast();
@@ -50,19 +44,14 @@ export const McqsProvider: React.FC<McqsProviderProps> = ({ children }) => {
     setIsFetchingMcq(true);
 
     try {
-      const { data } = await api.get<MultipleChoiceQuestionType>('/for_you', {
-        signal: controller.signal,
-      });
+      const { data } = await api.get<MultipleChoiceQuestionType>('/for_you');
+
       setMcqs((prev) => [...prev, data]);
       successful = true;
-    } catch (e) {
-      const { response } = e as AxiosError;
-
+    } catch {
       successful = false;
       toast.show({
-        description:
-          (response?.data as UnprocessableEntityErrorType)?.message ||
-          'Something went wrong',
+        description: 'Something went wrong while fetching the question.',
         placement: 'top',
         bgColor: 'error',
       });
@@ -79,20 +68,13 @@ export const McqsProvider: React.FC<McqsProviderProps> = ({ children }) => {
 
       try {
         const { data } = await api.get<FetchAnswerResponse>('/reveal', {
-          params: {
-            id,
-          },
-          signal: controller.signal,
+          params: { id },
         });
 
         successful = data?.correct_options[0]?.id ?? '';
-      } catch (e) {
-        const { response } = e as AxiosError;
-
+      } catch {
         toast.show({
-          description:
-            (response?.data as UnprocessableEntityErrorType)?.message ||
-            'Something went wrong',
+          description: 'Something went wrong while fetching the answer.',
           placement: 'top',
           bgColor: 'error',
         });
@@ -112,7 +94,6 @@ export const McqsProvider: React.FC<McqsProviderProps> = ({ children }) => {
           getMcq,
           mcqs,
           fetchAnswer,
-          controller,
         };
       }, [fetchAnswer, getMcq, isFetchingMcq, mcqs])}
     >

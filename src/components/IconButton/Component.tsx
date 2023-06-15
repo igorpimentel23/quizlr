@@ -11,13 +11,11 @@ const IconButtonComponent: React.FC<IconButtonProps> = ({
   icon,
   text,
   onPress,
-}) => {
-  return (
-    <Container onPress={onPress}>
-      {icon}
-      {text && <ButtonText>{text}</ButtonText>}
-    </Container>
-  );
-};
+}) => (
+  <Container onPress={onPress}>
+    {icon}
+    {text && <ButtonText>{text}</ButtonText>}
+  </Container>
+);
 
 export default memo(IconButtonComponent);

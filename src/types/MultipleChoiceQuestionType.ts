@@ -1,3 +1,5 @@
+import { UserType } from './User';
+
 export type MultipleChoiceQuestionType = {
   type: 'mcq';
   id: number;
@@ -8,8 +10,5 @@ export type MultipleChoiceQuestionType = {
     id: string;
     answer: string;
   }[];
-  user: {
-    name: string;
-    avatar: string;
-  };
+  user: UserType;
 };

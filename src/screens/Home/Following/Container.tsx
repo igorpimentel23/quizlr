@@ -3,12 +3,10 @@ import { FlashcardsProvider } from '@contexts/FlashcardContext';
 
 import { FollowingScreen } from './Screen';
 
-const FollowingContainer: React.FC = () => {
-  return (
-    <FlashcardsProvider>
-      <FollowingScreen />
-    </FlashcardsProvider>
-  );
-};
+const FollowingContainer: React.FC = () => (
+  <FlashcardsProvider>
+    <FollowingScreen />
+  </FlashcardsProvider>
+);
 
 export default memo(FollowingContainer);

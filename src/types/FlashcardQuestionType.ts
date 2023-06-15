@@ -1,3 +1,5 @@
+import { UserType } from './User';
+
 export type FlashCardQuestionType = {
   type: 'flashcard';
   id: number;
@@ -5,8 +7,5 @@ export type FlashCardQuestionType = {
   flashcard_front: string;
   flashcard_back: string;
   description: string;
-  user: {
-    name: string;
-    avatar: string;
-  };
+  user: UserType;
 };
