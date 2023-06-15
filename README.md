@@ -13,7 +13,7 @@ React-Native application using Expo's managed workflow to simulate an educationa
 9. [License](#license)
 
 ## Project Description
-Quizlr is a cross-platform application that simulates the implementation of the "Home" screen of an educational TikTok clone. The application showcases the content of the "Following" and "For You" sections, featuring Flashcards and Multiple Choice Questions (MCQs). Users can browse content in an infinite scroll fashion, and a countdown timer measures the app usage time. (Expand on this section using your existing content)
+Quizlr is a cross-platform application that simulates the implementation of the "Home" screen of an educational TikTok clone. The application showcases the content of the "Following" and "For You" sections, featuring Flashcards and Multiple Choice Questions (MCQs). Users can browse content in an infinite scroll fashion, and a countdown timer measures the app usage time. The app also adapts to the OS theme (dark or light).
 
 ## Tech Stack
 - React Native
