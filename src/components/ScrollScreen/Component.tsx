@@ -45,6 +45,7 @@ const ScrollScreenComponent: React.FC<ScrollScreenComponentProps> = ({
     <FlatList
       flex={1}
       pb={Platform.OS === 'ios' ? 0 : moderateScale(20)}
+      bgColor={theme?.colors.background}
       data={items}
       keyExtractor={(_, index) => index.toString()}
       pagingEnabled
